@@ -1,0 +1,10 @@
+$(document).ready(function(){$('[data-toggle="tooltip"]').tooltip()
+if($(".home-slider").length>0)
+$(".home-slider").owlCarousel({items:1});if($(".messages-slider").length>0)
+$(".messages-slider").owlCarousel({autoplay:true,responsive:{0:{items:1},480:{items:2},768:{items:4}}});if($(".nav-tabs").length>0)
+$(".nav-tabs li:first-child a").trigger("click");if($(".gallery-wrapper").length>0)
+{load_media();$(".load-more").click(function(){load_media();});}
+$('body').on('click','.zoom-image',function(e){e.preventDefault();$(this).magnificPopup({type:'image',closeOnContentClick:true,mainClass:'mfp-img-mobile',image:{verticalFit:true}});});});function load_media()
+{$(".load-more").hide();$.ajax(load_url+page).done(function(e){if(e=="")
+$(".load-more").hide();else
+$(".load-more").show();$(".gallery-wrapper").append(e);$(".loading-ajax").hide();page++;});}
